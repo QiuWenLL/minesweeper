@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.difficulty {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.difficulty button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.difficulty button.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#reset-button {
+    padding: 5px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#reset-button:hover {
+    background-color: #45a049;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(9, 30px);
+    grid-template-rows: repeat(9, 30px);
+    gap: 2px;
+    margin: 0 auto;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #bdbdbd;
+    border: 1px solid #7b7b7b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cell.revealed {
+    background-color: #e0e0e0;
+}
+
+.cell.flagged {
+    background-color: #bdbdbd;
+    position: relative;
+}
+
+.cell.flagged::after {
+    content: "🚩";
+    font-size: 18px;
+}
+
+.cell.mine {
+    background-color: #ff5252;
+}
+
+.cell.mine::after {
+    content: "💣";
+    font-size: 18px;
+}
+
+/* 数字颜色 */
+.cell[data-count="1"] {
+    color: blue;
+}
+
+.cell[data-count="2"] {
+    color: green;
+}
+
+.cell[data-count="3"] {
+    color: red;
+}
+
+.cell[data-count="4"] {
+    color: darkblue;
+}
+
+.cell[data-count="5"] {
+    color: darkred;
+}
+
+.cell[data-count="6"] {
+    color: teal;
+}
+
+.cell[data-count="7"] {
+    color: black;
+}
+
+.cell[data-count="8"] {
+    color: gray;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    #game-board {
+        grid-template-columns: repeat(9, 25px);
+        grid-template-rows: repeat(9, 25px);
+    }
+    
+    .cell {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+    
+    .game-info {
+        font-size: 16px;
+    }
+}
